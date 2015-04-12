@@ -45,7 +45,7 @@ ZSH_THEME="pmcgee"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git rails ruby docker boot2docker ruby gem)
 
 # User configuration
 
@@ -78,6 +78,42 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vimc="~/.vim/docker/run-container.sh"
+alias vim="mvim -v"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#export DOCKER_HOST=tcp://192.168.59.103:2376
+#export DOCKER_CERT_PATH=/Users/daniel/.boot2docker/certs/boot2docker-vm
+#export DOCKER_TLS_VERIFY=1
+
+#boot2docker up
+
+# added by travis gem
+[ -f /Users/daniel/.travis/travis.sh ] && source /Users/daniel/.travis/travis.sh
+
+#
+# Auto Start
+#
+
+if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
+  tmux start-server
+
+  # Create a 'prezto' session if no session has been defined in tmux.conf.
+  if ! tmux has-session 2> /dev/null; then
+    tmux_session='prezto'
+    tmux \
+      new-session -d -s "$tmux_session" \; \
+      set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+  fi
+
+  # Attach to the 'prezto' session or to the last session used.
+  exec tmux attach-session
+fi
+
+#
+# Aliases
+#
+
+alias tmuxa='tmux attach-session'
+alias tmuxl='tmux list-sessions'
