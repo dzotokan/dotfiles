@@ -96,23 +96,23 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # Auto Start
 #
 
-if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
-  tmux start-server
+#if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
+  #tmux start-server
 
-  # Create a 'prezto' session if no session has been defined in tmux.conf.
-  if ! tmux has-session 2> /dev/null; then
-    tmux_session='main'
-    tmux \
-      new-session -d -s "$tmux_session" \; \
-      set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-  fi
+  ## Create a 'prezto' session if no session has been defined in tmux.conf.
+  #if ! tmux has-session 2> /dev/null; then
+    #tmux_session='main'
+    #tmux \
+      #new-session -d -s "$tmux_session" \; \
+      #set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+  #fi
 
-  # Attach to the 'prezto' session or to the last session used.
-  exec tmux attach-session
-fi
+  ## Attach to the:$ 'prezto' session or to the last session used.
+  #exec tmux attach-session
+#fi
 
 function chjava() {
-  if [ $# -ne 0 ]; then
+  if [ $# -ne 0 ];
    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
    if [ -n "${JAVA_HOME+x}" ]; then
     removeFromPath $JAVA_HOME
