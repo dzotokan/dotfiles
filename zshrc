@@ -87,7 +87,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 function b2d() {
   echo "Booting up Docker VM..."
   boot2docker up
-  export DOCKER_HOST=tcp://192.168.59.103:2376
+  export DOCKER_HOST=tcp://`boot2docker ip`:2376
   export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
   export DOCKER_TLS_VERIFY=1
 }
