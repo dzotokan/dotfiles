@@ -45,7 +45,7 @@ ZSH_THEME="pmcgee"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby docker boot2docker ruby gem)
+plugins=(git rails ruby docker boot2docker ruby gem cp colorize colored-man sbt scala npm pip brew battery)
 
 # User configuration
 
@@ -83,19 +83,17 @@ alias vim="mvim -v"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-#export DOCKER_HOST=tcp://192.168.59.103:2376
-#export DOCKER_CERT_PATH=/Users/daniel/.boot2docker/certs/boot2docker-vm
-#export DOCKER_TLS_VERIFY=1
 
-#boot2docker up
+function b2d() {
+  echo "Booting up Docker VM..."
+  boot2docker up
+  export DOCKER_HOST=tcp://192.168.59.103:2376
+  export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+  export DOCKER_TLS_VERIFY=1
+}
 
 # added by travis gem
 [ -f /Users/daniel/.travis/travis.sh ] && source /Users/daniel/.travis/travis.sh
-
-#
-# Auto Start
-#
-
 
 function chjava() {
   if [ $# -ne 0 ]; then
@@ -114,6 +112,5 @@ function chjava() {
 #
 # Aliases
 #
-
 alias tmuxa='tmux attach-session'
 alias tmuxl='tmux list-sessions'
