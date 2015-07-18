@@ -45,7 +45,7 @@ ZSH_THEME="pmcgee"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby docker boot2docker ruby gem cp colorize colored-man sbt scala npm pip brew battery)
+plugins=(git rails ruby docker boot2docker ruby gem cp colorize colored-man sbt scala npm pip brew battery tmux)
 
 # User configuration
 
@@ -108,6 +108,25 @@ function chjava() {
  function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
  }
+
+# Source NVM
+export NVM_DIR="/Users/daniel.stankevich/.nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
+  tmux start-server
+
+  # Create a 'toto' session if no session has been defined in tmux.conf.
+  if ! tmux has-session 2> /dev/null; then
+    tmux_session='toto'
+    tmux \
+      new-session -d -s "$tmux_session" \; \
+      set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+  fi
+
+  # Attach to the 'toto' session or to the last session used.
+  exec tmux attach-session
+fi
 
 #
 # Aliases
