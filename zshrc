@@ -1,10 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="pmcgee"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -67,22 +63,12 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 alias vimc="~/.vim/docker/run-container.sh"
 alias vim="mvim -v"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
+alias tmuxa='tmux attach-session'
+alias tmuxl='tmux list-sessions'
 
 function b2d() {
   echo "Booting up Docker VM..."
@@ -109,27 +95,26 @@ function chjava() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
  }
 
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+#if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
+  #tmux start-server
+
+  ## Create a 'toto' session if no session has been defined in tmux.conf.
+  #if ! tmux has-session 2> /dev/null; then
+    #tmux_session='toto'
+    #tmux \
+      #new-session -d -s "$tmux_session" \; \
+      #set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+  #fi
+
+  ## Attach to the 'toto' session or to the last session used.
+  #exec tmux attach-session
+#fi
+
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin" 
+# Add Cabal to PATH
+export PATH="$PATH:$HOME/.cabal/bin"
 # Source NVM
 export NVM_DIR="/Users/daniel.stankevich/.nvm"
-
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
-  tmux start-server
-
-  # Create a 'toto' session if no session has been defined in tmux.conf.
-  if ! tmux has-session 2> /dev/null; then
-    tmux_session='toto'
-    tmux \
-      new-session -d -s "$tmux_session" \; \
-      set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-  fi
-
-  # Attach to the 'toto' session or to the last session used.
-  exec tmux attach-session
-fi
-
-#
-# Aliases
-#
-alias tmuxa='tmux attach-session'
-alias tmuxl='tmux list-sessions'
