@@ -41,7 +41,7 @@ ZSH_THEME="pmcgee"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby docker boot2docker ruby gem cp colorize colored-man sbt scala npm pip brew battery tmux)
+plugins=(git rails ruby docker boot2docker ruby gem cp colorize colored-man sbt scala npm pip brew battery tmux cabal)
 
 # User configuration
 
@@ -63,8 +63,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-alias zshconfig="vim ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
+alias tmuxrc="vim ~/.tmux.conf"
 alias vimc="~/.vim/docker/run-container.sh"
 alias vim="mvim -v"
 alias tmuxa='tmux attach-session'
