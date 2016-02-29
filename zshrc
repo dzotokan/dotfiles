@@ -79,9 +79,6 @@ function b2d() {
   export DOCKER_TLS_VERIFY=1
 }
 
-# added by travis gem
-[ -f /Users/daniel/.travis/travis.sh ] && source /Users/daniel/.travis/travis.sh
-
 function chjava() {
   if [ $# -ne 0 ]; then
     removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
@@ -118,4 +115,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Add Cabal to PATH
 export PATH="$PATH:$HOME/.cabal/bin"
 # Source NVM
-export NVM_DIR="/Users/daniel.stankevich/.nvm"
+export NVM_DIR="$HOME/.nvm"
