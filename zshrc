@@ -67,7 +67,6 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias tmuxrc="vim ~/.tmux.conf"
 alias vimc="~/.vim/docker/run-container.sh"
-alias vim="mvim -v"
 alias tmuxa='tmux attach-session'
 alias tmuxl='tmux list-sessions'
 
