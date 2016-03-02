@@ -41,7 +41,7 @@ ZSH_THEME="pmcgee"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby docker boot2docker ruby gem cp colorize colored-man sbt scala npm pip brew battery tmux cabal)
+plugins=(git rails ruby docker boot2docker ruby gem cp colorize colored-man sbt scala npm pip brew battery tmux cabal autojump)
 
 # User configuration
 
@@ -110,7 +110,7 @@ function chjava() {
 #fi
 
 # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin" 
+export PATH="$PATH:$HOME/.rvm/bin"
 # Add Cabal to PATH
 export PATH="$PATH:$HOME/.cabal/bin"
 # Source NVM
