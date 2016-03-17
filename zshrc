@@ -116,7 +116,8 @@ function chjava() {
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"
 # Add Cabal to PATH
-export PATH="$PATH:$HOME/.cabal/bin"
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 # Source NVM
 export NVM_DIR="$HOME/.nvm"
 
